@@ -1,0 +1,7 @@
+{
+  "fields": {
+    "bday": "Age",
+    "sex": "Sexo",
+    "enter": "Enter"
+  }
+}
