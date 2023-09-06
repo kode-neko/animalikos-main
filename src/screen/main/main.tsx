@@ -3,7 +3,7 @@ import Preact from 'preact';
 const Main: Preact.FunctionComponent = () => {
   return (
     <>
-      Main
+      Mainnn
     </>
   );
 };
