@@ -5,8 +5,6 @@ import { Main } from './screen/main';
 const App: Preact.FunctionComponent = () => {
   return (
     <>
-      App
-      <hr />
       <Router>
         <Main path="/"></Main>
       </Router>

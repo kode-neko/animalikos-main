@@ -1,0 +1,63 @@
+@import "../../styles/builds.less";
+
+.cont {
+  max-width: 984px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 64px;
+  height: 132px;
+  border-right: @border-common;
+  border-left: @border-common;
+  border-bottom: @border-common;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Carter One', cursive;
+}
+
+.menu {
+  border-right: @border-common;
+  border-left: @border-common;
+  border-bottom: @border-common;
+  display: flex;
+
+  .left, .right {
+    flex-basis: content;
+  }
+
+  .center {
+    flex-grow: 1;
+  }
+}
+
+.lang {
+  display: flex;
+}
+
+.color {
+  ul {
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.social {
+  ul {
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  text-align: center;
+  border-right: @border-common;
+  border-left: @border-common;
+}

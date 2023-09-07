@@ -1,9 +1,10 @@
 import Preact from 'preact';
+import { MainBar } from '../../components';
 
 const Main: Preact.FunctionComponent = () => {
   return (
     <>
-      Mainnn
+      <MainBar />
     </>
   );
 };
