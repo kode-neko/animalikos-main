@@ -8,17 +8,20 @@ const MainBar: Preact.FunctionComponent = () => {
       <div className={styles.menu}>
         <div className={styles.left}>
           <div className={styles.lang}>
-            <div>ES</div>
-            <div>EN</div>
+            <div className={styles.es}>ES</div>
+            <div className={styles.en}>EN</div>
           </div>
         </div>
         <div className={styles.center}>
           <div className={styles.color}>
-            <ul>
-              <li>azul</li>
-              <li>rojo</li>
-              <li>verde</li>
-            </ul>
+            <div className={styles.label}>Color</div>
+            <div className={styles.menu}>
+              <ul>
+                <li>azul</li>
+                <li>rojo</li>
+                <li>verde</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className={styles.right}>

@@ -22,32 +22,54 @@
   border-left: @border-common;
   border-bottom: @border-common;
   display: flex;
+  height: 50px;
 
   .left, .right {
     flex-basis: content;
   }
 
   .center {
+    display: flex;
     flex-grow: 1;
+    border-right: @border-common;
+    border-left: @border-common;
   }
 }
 
 .lang {
   display: flex;
+
+  .es, .en {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .color {
-  ul {
-    li {
-      display: inline-block;
-    }
+  .label {
+    height: 50px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu {
+    display: none;
   }
 }
 
 .social {
   ul {
+    display: flex;
     li {
-      display: inline-block;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
