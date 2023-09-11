@@ -2,9 +2,10 @@ import Preact from 'preact';
 import { useState } from 'preact/hooks';
 import styles from './styles.module.less';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faTwitter, faCodepen, faFigma } from '@fortawesome/free-brands-svg-icons';
-import { faBolt, faPaintRoller } from '@fortawesome/free-solid-svg-icons';
+import { faPaintRoller } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
+import { ColorList, SocialList } from '../../globals';
+import { Color, Social } from '../../model';
 
 const MainBar: Preact.FunctionComponent = () => {
 
@@ -30,18 +31,12 @@ const MainBar: Preact.FunctionComponent = () => {
             </div>
             <div onClick={handleClickMenu} className={classNames(styles.menu)}>
               <ul>
-                <li>
-                  <span className={classNames(styles.color, styles.blue)} />
-                  <span className={styles.label}>azul</span>
-                </li>
-                <li>
-                  <span className={classNames(styles.color, styles.red)} />
-                  <span className={styles.label}>rojo</span>
-                </li>
-                <li>
-                  <span className={classNames(styles.color, styles.green)} />
-                  <span className={styles.label}>verde</span>
-                </li>
+                {ColorList.map((c: Color) => (
+                  <li>
+                    <span className={classNames(styles['color'], styles[c.name])} />
+                    <span className={styles.label}>azul</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -49,11 +44,7 @@ const MainBar: Preact.FunctionComponent = () => {
         <div className={styles.right}>
           <div className={styles.social}>
             <ul>
-              <li><FontAwesomeIcon icon={faGithub} /></li>
-              <li><FontAwesomeIcon icon={faTwitter} /></li>
-              <li><FontAwesomeIcon icon={faCodepen} /></li>
-              <li><FontAwesomeIcon icon={faBolt} /></li>
-              <li><FontAwesomeIcon icon={faFigma} /></li>
+              {SocialList.map((s: Social) => <li><FontAwesomeIcon icon={s.icon} /></li>)}
             </ul>
           </div>
         </div>
