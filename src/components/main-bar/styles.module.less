@@ -1,4 +1,5 @@
 @import "../../styles/builds.less";
+@import "../../styles/color.less";
 
 .cont {
   max-width: 984px;
@@ -49,15 +50,59 @@
 }
 
 .color {
-  .label {
+  &>.label {
     height: 50px;
-    padding: 0 10px;
+    padding: 0 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+
+    .icon {
+      font-size: 24px;
+    }
+    .text {
+
+    }
   }
   .menu {
-    display: none;
+    display: block;
+    position: relative;
+    background-color: @main-blue;
+    top: 2px;
+    left: -2px;
+    height: auto;
+
+    ul li {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .color {
+      display: inline-block;
+      border: @border-thin;
+      box-sizing: border-box;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+    }
+
+    .color.blue {
+      background-color: @paint-blue;
+    }
+
+    .color.red {
+      background-color: @paint-red;
+    }
+
+    .color.green {
+      background-color: @paint-green;
+    }
+
+    .label {
+      padding-left: 8px;
+    }
   }
 }
 
@@ -70,6 +115,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 24px;
     }
   }
 }
