@@ -1,4 +1,5 @@
 import Preact from 'preact';
+import { useState } from 'preact/hooks';
 import styles from './styles.module.less';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faTwitter, faCodepen, faFigma } from '@fortawesome/free-brands-svg-icons';
@@ -6,6 +7,11 @@ import { faBolt, faPaintRoller } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 
 const MainBar: Preact.FunctionComponent = () => {
+
+  const [isVisMenu, setIsVisMenu] = useState<boolean>(false);
+
+  const handleClickMenu: () => void = () => setIsVisMenu(!isVisMenu);
+
   return (
     <div className={styles.cont}>
       <div className={styles.title}>Animalikos</div>
@@ -22,7 +28,7 @@ const MainBar: Preact.FunctionComponent = () => {
               <span className={styles.icon}><FontAwesomeIcon icon={faPaintRoller} /></span>
               <span className={styles.text}>Color</span>
             </div>
-            <div className={styles.menu}>
+            <div onClick={handleClickMenu} className={classNames(styles.menu)}>
               <ul>
                 <li>
                   <span className={classNames(styles.color, styles.blue)} />
