@@ -46,6 +46,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: .2s all;
+    font-weight: none;
+
+    &:hover {
+      cursor: pointer;
+      color: @pale-blue;
+    }
+  }
+
+  .bold {
+    transition: .2s all;
+    font-weight: bold;
   }
 }
 
@@ -61,12 +73,9 @@
     .icon {
       font-size: 24px;
     }
-    .text {
-
-    }
   }
   .menu {
-    display: block;
+    display: none;
     position: relative;
     background-color: @main-blue;
     top: 2px;
@@ -86,6 +95,10 @@
       height: 24px;
       width: 24px;
       border-radius: 50%;
+
+      .label:hover {
+        cursor: pointer;
+      }
     }
 
     .color.blue {
@@ -113,13 +126,20 @@
 .social {
   ul {
     display: flex;
-    li {
+    li a {
       height: 50px;
       width: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 24px;
+      color: inherit;
+      transition: .2s all;
+
+      &:hover {
+        cursor: pointer;
+        color: @pale-blue;
+      }
     }
   }
 }

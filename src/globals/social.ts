@@ -5,7 +5,7 @@ import { faBolt } from "@fortawesome/free-solid-svg-icons";
 const SocialList: Social[] = [
   {
     name: "github",
-    url: "",
+    url: "https://www.google.com",
     icon: faGithub
   },
   {

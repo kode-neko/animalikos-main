@@ -9,8 +9,10 @@ import { Color, Social } from '../../model';
 
 const MainBar: Preact.FunctionComponent = () => {
 
+  const [lang, setLang] = useState<string>('en');
   const [isVisMenu, setIsVisMenu] = useState<boolean>(false);
 
+  const handleClickLang: (sel: string) => void = (sel: string) => setLang(sel);
   const handleClickMenu: () => void = () => setIsVisMenu(!isVisMenu);
 
   return (
@@ -19,8 +21,8 @@ const MainBar: Preact.FunctionComponent = () => {
       <div className={styles.menu}>
         <div className={styles.left}>
           <div className={styles.lang}>
-            <div className={styles.es}>ES</div>
-            <div className={styles.en}>EN</div>
+            <div onClick={() => handleClickLang('es')} className={classNames(styles.es, lang === 'es' && styles.bold)}>ES</div>
+            <div onClick={() => handleClickLang('en')} className={classNames(styles.en, lang === 'en' && styles.bold)}>EN</div>
           </div>
         </div>
         <div className={styles.center}>
@@ -44,7 +46,7 @@ const MainBar: Preact.FunctionComponent = () => {
         <div className={styles.right}>
           <div className={styles.social}>
             <ul>
-              {SocialList.map((s: Social) => <li><FontAwesomeIcon icon={s.icon} /></li>)}
+              {SocialList.map((s: Social) => <li><a href={s.url} target="_blank"><FontAwesomeIcon icon={s.icon} /></a></li>)}
             </ul>
           </div>
         </div>
