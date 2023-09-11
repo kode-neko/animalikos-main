@@ -1,7 +1,19 @@
 {
   "fields": {
     "bday": "Age",
-    "sex": "Sexo",
-    "enter": "Enter"
+    "sex": "Sex",
+    "enter": "Entering"
+  },
+  "main": {
+    "title": "Animalikos",
+    "desc": "Fugiat dolore et in nostrud ex duis mollit incididunt sint ea. Aliqua proident non enim consequat irure incididunt nisi duis laboris nulla. Enim proident in sunt laborum sit irure aliquip id reprehenderit consequat excepteur qui in. Esse elit exercitation ullamco dolor."
+  },
+  "btn": {
+    "color": "Color"
+  },
+  "colors": {
+    "blue": "Blue",
+    "red": "Red",
+    "green": "Green"
   }
 }

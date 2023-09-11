@@ -6,37 +6,44 @@ import { faPaintRoller } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import { ColorList, SocialList } from '../../globals';
 import { Color, Social } from '../../model';
+import { useTranslation } from 'react-i18next';
 
 const MainBar: Preact.FunctionComponent = () => {
 
-  const [lang, setLang] = useState<string>('en');
+  const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState<string>(i18n.language);
   const [isVisMenu, setIsVisMenu] = useState<boolean>(false);
 
-  const handleClickLang: (sel: string) => void = (sel: string) => setLang(sel);
+  const handleClickLang: (sel: string) => void = (sel: string) => {
+    if(i18n.language !== sel) {
+      i18n.changeLanguage(sel);
+      setLang(sel);
+    }
+  };
   const handleClickMenu: () => void = () => setIsVisMenu(!isVisMenu);
 
   return (
     <div className={styles.cont}>
-      <div className={styles.title}>Animalikos</div>
+      <div className={styles.title}>{t('main.title')}</div>
       <div className={styles.menu}>
         <div className={styles.left}>
           <div className={styles.lang}>
-            <div onClick={() => handleClickLang('es')} className={classNames(styles.es, lang === 'es' && styles.bold)}>ES</div>
-            <div onClick={() => handleClickLang('en')} className={classNames(styles.en, lang === 'en' && styles.bold)}>EN</div>
+            <div onClick={() => handleClickLang('es')} className={classNames(styles.es, lang === 'es' && styles.bold)}>es</div>
+            <div onClick={() => handleClickLang('en')} className={classNames(styles.en, lang === 'en' && styles.bold)}>en</div>
           </div>
         </div>
         <div className={styles.center}>
           <div className={styles.color}>
             <div className={styles.label}>
               <span className={styles.icon}><FontAwesomeIcon icon={faPaintRoller} /></span>
-              <span className={styles.text}>Color</span>
+              <span className={styles.text}>{t('btn.color')}</span>
             </div>
             <div onClick={handleClickMenu} className={classNames(styles.menu)}>
               <ul>
                 {ColorList.map((c: Color) => (
                   <li>
                     <span className={classNames(styles['color'], styles[c.name])} />
-                    <span className={styles.label}>azul</span>
+                    <span className={styles.label}>{t(`colors.${c.name}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -52,9 +59,7 @@ const MainBar: Preact.FunctionComponent = () => {
         </div>
       </div>
       <div className={styles.desc}>
-        <p>
-          Fugiat dolore et in nostrud ex duis mollit incididunt sint ea. Aliqua proident non enim consequat irure incididunt nisi duis laboris nulla. Enim proident in sunt laborum sit irure aliquip id reprehenderit consequat excepteur qui in. Esse elit exercitation ullamco dolor.
-        </p>
+        <p>{t('main.desc')}</p>
       </div>
     </div>
   );

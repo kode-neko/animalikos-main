@@ -5,27 +5,27 @@ import { faBolt } from "@fortawesome/free-solid-svg-icons";
 const SocialList: Social[] = [
   {
     name: "github",
-    url: "https://www.google.com",
+    url: "https://github.com/kode-neko",
     icon: faGithub
   },
   {
     name: "twitter",
-    url: "",
+    url: "https://twitter.com/KodenekoFront",
     icon: faTwitter
   },
   {
     name: "codepen",
-    url: "",
+    url: "https://codepen.io/kodeneko",
     icon: faCodepen
   },
   {
     name: "bolt",
-    url: "",
+    url: "https://stackblitz.com/@kode-neko",
     icon: faBolt
   },
   {
     name: "figma",
-    url: "",
+    url: "https://twitter.com/KodenekoFront",
     icon: faFigma
   }
 ];
