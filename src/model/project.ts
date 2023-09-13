@@ -1,9 +1,9 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 enum ProjectUrlType {
-  WEB = 'web',
-  GITHUB = 'github',
-  STACKBLITZ = 'stackblitz'
+  WEB = 0,
+  GITHUB = 1,
+  STACKBLITZ = 2
 }
 
 interface ProjectUrl {
