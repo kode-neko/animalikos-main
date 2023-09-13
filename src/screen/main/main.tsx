@@ -3,7 +3,7 @@ import { MainBar, Section } from '../../components';
 
 const Main: Preact.FunctionComponent = () => {
   return (
-    <div style={{padding: '20px'}}>
+    <div style={{padding: '20px', maxWidth: '984px', margin: '0 auto'}}>
       <MainBar />
       <br/>
       <br/>
