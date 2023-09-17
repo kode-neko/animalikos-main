@@ -1,7 +1,15 @@
 import Preact from 'preact';
 import { MainBar, Section, Projects, FormContact } from '../../components';
+import { Contact } from '../../model';
 
 const Main: Preact.FunctionComponent = () => {
+
+  const test: Contact = {
+    name: '',
+    mail: '',
+    content: ''
+  };
+
   return (
     <div style={{padding: '20px', maxWidth: '984px', margin: '0 auto'}}>
       <MainBar />
@@ -11,7 +19,7 @@ const Main: Preact.FunctionComponent = () => {
         <Projects />
       </Section>
       <Section title="Contact">
-        <FormContact />
+        <FormContact contact={test} />
       </Section>
     </div>
   );
