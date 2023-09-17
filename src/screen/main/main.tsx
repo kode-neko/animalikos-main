@@ -1,5 +1,5 @@
 import Preact from 'preact';
-import { MainBar, Section, Projects } from '../../components';
+import { MainBar, Section, Projects, FormContact } from '../../components';
 
 const Main: Preact.FunctionComponent = () => {
   return (
@@ -9,6 +9,9 @@ const Main: Preact.FunctionComponent = () => {
       <br/>
       <Section title="Projects">
         <Projects />
+      </Section>
+      <Section title="Contact">
+        <FormContact />
       </Section>
     </div>
   );

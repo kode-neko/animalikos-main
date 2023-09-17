@@ -1,0 +1,82 @@
+@import "../../styles/color.less";
+@import "../../styles/builds.less";
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  border-left: @border-common;
+  border-right: @border-common;
+  font-size: 24px;
+  margin-bottom: 40px;
+
+  input, textarea {
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+  }
+  .icon {
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  ::-webkit-input-placeholder {
+    font-size: 24px;
+    font-style: oblique;
+  }
+  :-ms-input-placeholder {
+    font-size: 24px;
+    font-style: oblique;
+  }
+  ::placeholder {
+    font-size: 24px;
+    font-style: oblique;
+  }
+  .field:first-child {
+    position: relative;
+    margin-top: 70px;
+    border-top: @border-common;
+  }
+}
+
+.field,.textArea {
+  border-bottom: @border-common;
+  padding: 20px 30px;
+  display: flex;
+  .input {
+    flex: 1;
+  }
+}
+
+.textArea {
+  .input textarea {
+    height: 200px;
+  }
+}
+
+.bottom {
+  display: flex;
+  .hint{
+    border-right: @border-common;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    .msg {
+      font-style: oblique;
+    }
+  }
+  .actions {
+    .btn {
+      padding: 20px 30px;
+      font-size: 24px;
+      text-transform: uppercase;
+      transition: .2s all;
+    }
+    .btn:hover {
+      cursor: pointer;
+      color: @pale-blue;
+    }
+  }
+}
