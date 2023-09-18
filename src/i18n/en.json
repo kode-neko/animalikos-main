@@ -15,5 +15,19 @@
     "blue": "Blue",
     "red": "Red",
     "green": "Green"
+  },
+  "hint": {
+    "mandatory": "All fields are mandatory"
+  },
+  "placeholder": {
+    "name": "Name",
+    "mail": "Mail",
+    "content": "Content"
+  },
+  "labels": {
+    "send": "Send"
+  },
+  "error": {
+    "maxStr": "The max length is {{max}} characters"
   }
 }

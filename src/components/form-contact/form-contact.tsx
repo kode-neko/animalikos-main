@@ -94,7 +94,7 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
           <div className={styles.msg}>{t('hint.mandatory')}</div>
         </div>
         <div className={styles.actions}>
-          <button className={styles.btn} type="submit">{t('placeholder.send')}</button>
+          <button className={styles.btn} type="submit">{t('labels.send')}</button>
         </div>
       </div>
     </form>
