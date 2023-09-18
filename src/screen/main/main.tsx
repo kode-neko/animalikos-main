@@ -19,7 +19,7 @@ const Main: Preact.FunctionComponent = () => {
         <Projects />
       </Section>
       <Section title="Contact">
-        <FormContact contact={test} />
+        <FormContact contact={test} onSend={(contact: Contact) => console.log(contact)}/>
       </Section>
     </div>
   );
