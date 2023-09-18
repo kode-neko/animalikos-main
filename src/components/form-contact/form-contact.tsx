@@ -9,6 +9,8 @@ import * as Yup from 'yup';
 
 type FormContactProps = {
   contact: Contact;
+  onSend?: (msg: Contact) => void,
+  onError?: () => void
 }
 
 const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: FormContactProps) => {
@@ -19,7 +21,7 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
       .max(50, t('error.maxStr', {max: 50}))
       .required(t('hint.mandatory')),
     mail: Yup.string()
-      .email(t('error.maxStr', {max: 50}))
+      .email(t('error.maxStr', {max: 100}))
       .required(t('hint.mandatory')),
     content: Yup.string()
       .max(50, t('error.maxStr', {max: 200}))
@@ -32,6 +34,9 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
       console.log(values);
     }
   });
+  console.log(formik);
+  console.log(formik.isValid);
+  console.log(formik.dirty);
 
   return (
     <form className={styles.cont} onSubmit={(e: Preact.JSX.TargetedEvent<HTMLFormElement, Event>): void => {
@@ -49,6 +54,7 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
             id="name"
             name="name"
             type="text"
+            maxLength={50}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.name}
@@ -65,6 +71,7 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
             id="mail"
             name="mail"
             type="text"
+            maxLength={100}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.mail}
@@ -81,6 +88,7 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
             id="content"
             name="content"
             type="text"
+            maxLength={200}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.content}
@@ -94,7 +102,7 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
           <div className={styles.msg}>{t('hint.mandatory')}</div>
         </div>
         <div className={styles.actions}>
-          <button className={styles.btn} type="submit">{t('labels.send')}</button>
+          <button className={styles.btn} type="submit" disabled={!(formik.isValid && formik.dirty)}>{t('labels.send')}</button>
         </div>
       </div>
     </form>
