@@ -9,11 +9,10 @@ import * as Yup from 'yup';
 
 type FormContactProps = {
   contact: Contact;
-  onSend?: (msg: Contact) => void,
-  onError?: () => void
+  onSend: (msg: Contact) => void
 }
 
-const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: FormContactProps) => {
+const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact, onSend}: FormContactProps) => {
   
   const {t} = useTranslation();
   const validation: Yup.AnyObject = Yup.object<Contact>({
@@ -30,20 +29,14 @@ const FormContact: Preact.FunctionComponent<FormContactProps> = ({contact}: Form
   const formik: FormikProps<Contact> = useFormik<Contact>({
     initialValues: contact,
     validationSchema: validation,
-    onSubmit: (values: Contact): void => {
-      console.log(values);
-    }
+    onSubmit: (values: Contact): void => onSend(values)
   });
-  console.log(formik);
-  console.log(formik.isValid);
-  console.log(formik.dirty);
 
   return (
     <form className={styles.cont} onSubmit={(e: Preact.JSX.TargetedEvent<HTMLFormElement, Event>): void => {
       e.preventDefault();
       e.stopPropagation();
-      console.log('submit');
-      formik.handleSubmit();
+      onSend(formik.values);
     }}>
       <div className={styles.field}>
         <div className={styles.icon}>
