@@ -1,6 +1,7 @@
 import Preact from 'preact';
 import { MainBar, Section, Projects, FormContact, Footer } from '../../components';
 import { Contact } from '../../model';
+import styles from './styles.module.less';
 
 const Main: Preact.FunctionComponent = () => {
 
@@ -11,10 +12,8 @@ const Main: Preact.FunctionComponent = () => {
   };
 
   return (
-    <div style={{padding: '20px', maxWidth: '984px', margin: '0 auto'}}>
+    <div className={styles.cont}>
       <MainBar />
-      <br/>
-      <br/>
       <Section title="Projects">
         <Projects />
       </Section>
