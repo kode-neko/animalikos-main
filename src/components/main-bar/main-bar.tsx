@@ -47,8 +47,8 @@ const MainBar: Preact.FunctionComponent<MainBarProps> = ({onSelectColor}: MainBa
               <ul>
                 {ColorList.map((c: Color) => (
                   <li key={c} onClick={() => onSelectColor(c)}>
-                    <span className={classNames(styles.color, styles[c.name])} />
-                    <span className={styles.label}>{t(`colors.${c.name}`)}</span>
+                    <span className={classNames(styles.color, styles[c])} />
+                    <span className={styles.label}>{t(`colors.${c}`)}</span>
                   </li>
                 ))}
               </ul>

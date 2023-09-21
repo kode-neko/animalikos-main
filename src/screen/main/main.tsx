@@ -13,7 +13,7 @@ const Main: Preact.FunctionComponent = () => {
     content: ''
   };
   const handleSelectColor: (c: Color) => void = (c: Color) => {
-    
+    console.log(c);
   };
   const handleSend: (contact: Contact) => void = (contact: Contact) => {
     getContact().sendMessage(contact)

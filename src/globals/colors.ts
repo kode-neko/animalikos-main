@@ -1,9 +1,5 @@
 import { Color } from "../model";
 
-const ColorList: Color[] = [
-  {name: 'blue'},
-  {name: 'red'},
-  {name: 'green'}
-];
+const ColorList: Color[] = Object.values(Color);
 
 export default ColorList;
