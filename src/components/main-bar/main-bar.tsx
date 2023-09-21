@@ -20,7 +20,8 @@ const MainBar: Preact.FunctionComponent = () => {
       setLang(sel);
     }
   };
-  const handleClickMenu: () => void = () => setIsVisMenu(!isVisMenu);
+  const handleEnterColor: () => void = () => setIsVisMenu(true);
+  const handleOutColor: () => void = () => setIsVisMenu(false);
 
   return (
     <div className={styles.cont}>
@@ -34,15 +35,15 @@ const MainBar: Preact.FunctionComponent = () => {
         </div>
         <div className={styles.center}>
           <div className={styles.color}>
-            <div className={styles.label}>
+            <div onMouseEnter={handleEnterColor} onMouseLeave={handleOutColor} className={styles.label}>
               <span className={styles.icon}><FontAwesomeIcon icon={faPaintRoller} /></span>
               <span className={styles.text}>{t('btn.color')}</span>
             </div>
-            <div onClick={handleClickMenu} className={classNames(styles.menu)}>
+            <div onMouseEnter={handleEnterColor} onMouseLeave={handleOutColor} className={classNames(styles.menuColor, !isVisMenu && styles.none)}>
               <ul>
                 {ColorList.map((c: Color) => (
-                  <li>
-                    <span className={classNames(styles['color'], styles[c.name])} />
+                  <li key={c}>
+                    <span className={classNames(styles.color, styles[c.name])} />
                     <span className={styles.label}>{t(`colors.${c.name}`)}</span>
                   </li>
                 ))}
@@ -53,14 +54,14 @@ const MainBar: Preact.FunctionComponent = () => {
         <div className={styles.right}>
           <div className={styles.social}>
             <ul>
-              {SocialList.map((s: Social) => <li><a href={s.url} target="_blank"><FontAwesomeIcon icon={s.icon} /></a></li>)}
+              {SocialList.map((s: Social) => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={s.icon} /></a></li>)}
             </ul>
           </div>
         </div>
       </div>
       <div className={styles.socialRes}>
         <ul>
-          {SocialList.map((s: Social) => <li><a href={s.url} target="_blank"><FontAwesomeIcon icon={s.icon} /></a></li>)}
+          {SocialList.map((s: Social) => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={s.icon} /></a></li>)}
         </ul>
       </div>
       <div className={styles.desc}>

@@ -62,6 +62,7 @@
 }
 
 .color {
+
   &>.label {
     height: 50px;
     padding: 0 20px;
@@ -74,31 +75,38 @@
       font-size: 24px;
     }
   }
-  .menu {
-    display: none;
+
+  .menuColor {
+    display: block;
     position: relative;
     background-color: @main-blue;
-    top: 2px;
     left: -2px;
     height: auto;
+    border: @border-common;
 
     ul li {
       padding: 10px;
       display: flex;
       align-items: center;
+
+      &:hover {
+        cursor: pointer;
+        color: @pale-blue;
+      }
+
+      &:hover .color {
+        cursor: pointer;
+        border-color: @pale-blue;
+      }
     }
 
     .color {
       display: inline-block;
-      border: @border-thin;
+      border: @border-common;
       box-sizing: border-box;
       height: 24px;
       width: 24px;
       border-radius: 50%;
-
-      .label:hover {
-        cursor: pointer;
-      }
     }
 
     .color.blue {
@@ -116,15 +124,11 @@
     .label {
       padding-left: 8px;
     }
-  }
 
-  menu.none{
-    display: none;
-    border-right: @border-common;
-    border-left: @border-common;
-    border-bottom: @border-common;
-    display: flex;
-    height: 50px;
+    // Class for hiding menu
+    &.none{
+      display: none;
+    }
   }
 }
 
