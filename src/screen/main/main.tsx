@@ -1,8 +1,9 @@
 import Preact from 'preact';
 import { MainBar, Section, Projects, FormContact, Footer } from '../../components';
-import { Contact } from '../../model';
+import { Color, Contact } from '../../model';
 import styles from './styles.module.less';
 import { getContact } from '../../service/getters';
+import classNames from 'classnames';
 
 const Main: Preact.FunctionComponent = () => {
 
@@ -11,7 +12,9 @@ const Main: Preact.FunctionComponent = () => {
     mail: '',
     content: ''
   };
-
+  const handleSelectColor: (c: Color) => void = (c: Color) => {
+    
+  };
   const handleSend: (contact: Contact) => void = (contact: Contact) => {
     getContact().sendMessage(contact)
       .then((res: Contact) => console.log('mensaje enviado: ', res))
@@ -19,8 +22,8 @@ const Main: Preact.FunctionComponent = () => {
   };
 
   return (
-    <div className={styles.cont}>
-      <MainBar />
+    <div className={classNames(styles.cont, 'blue')}>
+      <MainBar onSelectColor={handleSelectColor} />
       <Section title="Projects">
         <Projects />
       </Section>

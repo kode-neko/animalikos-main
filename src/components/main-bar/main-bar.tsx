@@ -8,7 +8,11 @@ import { ColorList, SocialList } from '../../globals';
 import { Color, Social } from '../../model';
 import { useTranslation } from 'react-i18next';
 
-const MainBar: Preact.FunctionComponent = () => {
+interface MainBarProps {
+  onSelectColor: (c: Color) => void
+}
+
+const MainBar: Preact.FunctionComponent<MainBarProps> = ({onSelectColor}: MainBarProps) => {
 
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState<string>(i18n.language);
@@ -42,7 +46,7 @@ const MainBar: Preact.FunctionComponent = () => {
             <div onMouseEnter={handleEnterColor} onMouseLeave={handleOutColor} className={classNames(styles.menuColor, !isVisMenu && styles.none)}>
               <ul>
                 {ColorList.map((c: Color) => (
-                  <li key={c}>
+                  <li key={c} onClick={() => onSelectColor(c)}>
                     <span className={classNames(styles.color, styles[c.name])} />
                     <span className={styles.label}>{t(`colors.${c.name}`)}</span>
                   </li>
