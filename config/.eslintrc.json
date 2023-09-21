@@ -6,40 +6,24 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "sourceType": "module",
     "project": [
       "./tsconfig.json"
     ]
   },
   "parser": "@typescript-eslint/parser",
-  "overrides": [
-    {
-      "files": [
-        "./src/**/*.test.ts"
-      ],
-      "plugins": [
-        "jest"
-      ],
-      "extends": [
-        "plugin:jest/recommended"
-      ],
-      "rules": {
-        "jest/prefer-expect-assertions": "off",
-        "jest/no-conditional-expect": "off"
-      }
-    },
-    {
-      "files": [
-        "./config/**/*.js"
-      ],
-      "extends": [
-        "eslint:recommended"
-      ]
-    }
+  "plugins": [
+    "react"
   ],
   "rules": {
     "@typescript-eslint/ban-types": "off",
@@ -72,6 +56,32 @@
         "allowNumber": true,
         "allowNullish": true
       }
-    ]
-  }
+    ],
+    "react/react-in-jsx-scope": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "./src/**/*.test.ts"
+      ],
+      "plugins": [
+        "jest"
+      ],
+      "extends": [
+        "plugin:jest/recommended"
+      ],
+      "rules": {
+        "jest/prefer-expect-assertions": "off",
+        "jest/no-conditional-expect": "off"
+      }
+    },
+    {
+      "files": [
+        "./config/**/*.js"
+      ],
+      "extends": [
+        "eslint:recommended"
+      ]
+    }
+  ]
 }
