@@ -2,13 +2,20 @@ import Preact from 'preact';
 import { MainBar, Section, Projects, FormContact, Footer } from '../../components';
 import { Contact } from '../../model';
 import styles from './styles.module.less';
+import { getContact } from '../../service/getters';
 
 const Main: Preact.FunctionComponent = () => {
 
-  const test: Contact = {
+  const initMsg: Contact = {
     name: '',
     mail: '',
     content: ''
+  };
+
+  const handleSend: (contact: Contact) => void = (contact: Contact) => {
+    getContact().sendMessage(contact)
+      .then((res: Contact) => console.log('mensaje enviado: ', res))
+      .catch(() => console.log('error al enviar mensaje'));
   };
 
   return (
@@ -18,7 +25,7 @@ const Main: Preact.FunctionComponent = () => {
         <Projects />
       </Section>
       <Section title="Contact">
-        <FormContact contact={test} onSend={(contact: Contact) => console.log(contact)}/>
+        <FormContact contact={initMsg} onSend={handleSend}/>
       </Section>
       <Footer label="Kodeneko @ 2023" />
     </div>
