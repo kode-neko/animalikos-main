@@ -58,6 +58,11 @@ const MainBar: Preact.FunctionComponent = () => {
           </div>
         </div>
       </div>
+      <div className={styles.socialRes}>
+        <ul>
+          {SocialList.map((s: Social) => <li><a href={s.url} target="_blank"><FontAwesomeIcon icon={s.icon} /></a></li>)}
+        </ul>
+      </div>
       <div className={styles.desc}>
         <p>{t('main.desc')}</p>
       </div>
