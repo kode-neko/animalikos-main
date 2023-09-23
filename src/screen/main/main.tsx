@@ -6,6 +6,7 @@ import { getContact } from '../../service/getters';
 import classNames from 'classnames';
 import { useAtom } from 'jotai';
 import { appColor } from '../../store';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Main: Preact.FunctionComponent = () => {
 
@@ -19,8 +20,8 @@ const Main: Preact.FunctionComponent = () => {
     setThemeColor(c);
   const handleSend: (contact: Contact) => void = (contact: Contact) => {
     getContact().sendMessage(contact)
-      .then((res: Contact) => console.log('mensaje enviado: ', res))
-      .catch(() => console.log('error al enviar mensaje'));
+      .then((res: Contact) => toast("Message sent"))
+      .catch(() => toast("Error sending"));
   };
 
   return (
@@ -35,6 +36,15 @@ const Main: Preact.FunctionComponent = () => {
         </Section>
         <Footer label="Kodeneko @ 2023" />
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={8000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        theme="dark"
+      />
     </div>
   );
 };
