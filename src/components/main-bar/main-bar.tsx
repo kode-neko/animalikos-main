@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { ColorList, SocialList } from '../../globals';
 import { Color, Social } from '../../model';
 import { useTranslation } from 'react-i18next';
+import { motion } from "framer-motion";
 
 interface MainBarProps {
   onSelectColor: (c: Color) => void
@@ -28,50 +29,61 @@ const MainBar: Preact.FunctionComponent<MainBarProps> = ({onSelectColor}: MainBa
   const handleOutColor: () => void = () => setIsVisMenu(false);
 
   return (
-    <div className={styles.cont}>
-      <div className={styles.title}>{t('main.title')}</div>
-      <div className={styles.menu}>
-        <div className={styles.left}>
-          <div className={styles.lang}>
-            <div onClick={() => handleClickLang('es')} className={classNames(styles.es, lang === 'es' && styles.bold)}>es</div>
-            <div onClick={() => handleClickLang('en')} className={classNames(styles.en, lang === 'en' && styles.bold)}>en</div>
-          </div>
-        </div>
-        <div className={styles.center}>
-          <div className={styles.color}>
-            <div onMouseEnter={handleEnterColor} onMouseLeave={handleOutColor} className={styles.label}>
-              <span className={styles.icon}><FontAwesomeIcon icon={faPaintRoller} /></span>
-              <span className={styles.text}>{t('btn.color')}</span>
+    <motion.div
+      className={styles.cont}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 1.3,
+        delay: 0.2
+      }}
+    >
+      <div className={styles.cont}>
+        <div className={styles.title}>{t('main.title')}</div>
+        <div className={styles.menu}>
+          <div className={styles.left}>
+            <div className={styles.lang}>
+              <div onClick={() => handleClickLang('es')} className={classNames(styles.es, lang === 'es' && styles.bold)}>es</div>
+              <div onClick={() => handleClickLang('en')} className={classNames(styles.en, lang === 'en' && styles.bold)}>en</div>
             </div>
-            <div onMouseEnter={handleEnterColor} onMouseLeave={handleOutColor} className={classNames(styles.menuColor, !isVisMenu && styles.none)}>
+          </div>
+          <div className={styles.center}>
+            <div className={styles.color}>
+              <div onMouseEnter={handleEnterColor} onMouseLeave={handleOutColor} className={styles.label}>
+                <span className={styles.icon}><FontAwesomeIcon icon={faPaintRoller} /></span>
+                <span className={styles.text}>{t('btn.color')}</span>
+              </div>
+              <div onMouseEnter={handleEnterColor} onMouseLeave={handleOutColor} className={classNames(styles.menuColor, !isVisMenu && styles.none)}>
+                <ul>
+                  {ColorList.map((c: Color) => (
+                    <li key={c} onClick={() => onSelectColor(c)}>
+                      <span className={classNames(styles.color, styles[c])} />
+                      <span className={styles.label}>{t(`colors.${c}`)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.social}>
               <ul>
-                {ColorList.map((c: Color) => (
-                  <li key={c} onClick={() => onSelectColor(c)}>
-                    <span className={classNames(styles.color, styles[c])} />
-                    <span className={styles.label}>{t(`colors.${c}`)}</span>
-                  </li>
-                ))}
+                {SocialList.map((s: Social) => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={s.icon} /></a></li>)}
               </ul>
             </div>
           </div>
         </div>
-        <div className={styles.right}>
-          <div className={styles.social}>
-            <ul>
-              {SocialList.map((s: Social) => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={s.icon} /></a></li>)}
-            </ul>
-          </div>
+        <div className={styles.socialRes}>
+          <ul>
+            {SocialList.map((s: Social) => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={s.icon} /></a></li>)}
+          </ul>
+        </div>
+        <div className={styles.desc}>
+          <p>{t('main.desc')}</p>
         </div>
       </div>
-      <div className={styles.socialRes}>
-        <ul>
-          {SocialList.map((s: Social) => <li key={s.name}><a href={s.url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={s.icon} /></a></li>)}
-        </ul>
-      </div>
-      <div className={styles.desc}>
-        <p>{t('main.desc')}</p>
-      </div>
-    </div>
+    </motion.div>
   );
 };
 
